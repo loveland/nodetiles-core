@@ -113,9 +113,11 @@ GeoJsonSource.prototype = {
   },
   
   _calculateBounds: function(dataset) {
-    return this._shapes(dataset).forEach(function(shape) {
-      shape.bounds = this._shapeBounds(shape);
-    }, this);
+    var shapes = this._shapes(dataset);
+    for (var i = 0; i < shapes.length; i++) {
+      shapes[i].bounds = this._shapeBounds(shapes[i]);
+    }
+    return shapes;
   },
 
   _filterByExtent: function(dataset, minX, minY, maxX, maxY) {
