@@ -47,7 +47,7 @@ RemoteGeoJsonSource.prototype = {
   getShapes: function(minX, minY, maxX, maxY, mapProjection, callback) {
     var data;
 
-    // Hacky! 
+    // Hacky!
     minXY = this._metersToLatLon([minX, minY]);
     maxXY = this._metersToLatLon([maxX, maxY]);
 
@@ -57,7 +57,7 @@ RemoteGeoJsonSource.prototype = {
     // zoom level produces a convenient spatial chunk of data.
     // var vectorTileZoom = 17;
     // var tiles = maptiles.getTileCoords(vectorTileZoom, [[, ], [, ]]);
-    // Let's do a query on the data based on our tiles 
+    // Let's do a query on the data based on our tiles
     // Do this later callback(this._loadError, data);
 
     var serializedBounds = minXY[0] + ',' + minXY[1] + ',' + maxXY[0] + ',' + maxXY[1];
@@ -93,81 +93,11 @@ RemoteGeoJsonSource.prototype = {
       //   callback(this._loadError, this._data);
       // }.bind(this));
     }.bind(this));
-
-
-    // Old stuff......
-
-    // If there already is data at our desired projection:
-    // if (this._projectedData[mapProjection]){
-    // 
-    //   // Filter the data to match the given bounds
-    //   data = this._filterByExtent(this._projectedData[mapProjection], minX, minY, maxX, maxY);
-    //   callback(null, data);
-    // }
-    // else {
-    // 
-    //   // If we don't already have data, load it
-    //   this.load(function(error, data) {
-    //     if (error){
-    //       this._loadError = error;
-    //     }
-    //     else if (!this._projectedData[mapProjection]) {
-    //       // TODO: why are we projecting?
-    //       // Shouldn't the data already come projected?
-    //       this._project(mapProjection);
-    //     }
-    // 
-    //     // Filter the data by the given extent
-    //     // TODO: instead, we should already have the data indexed by extent.
-    //     // Or we can just request this square from the server.
-    //     data = this._filterByExtent(this._projectedData[mapProjection], minX, minY, maxX, maxY);
-    //     callback(this._loadError, data);
-    //   }.bind(this));
-    // }
   },
 
   load: function(callback) {
     // Load becomes a noop
     return;
-
-    //if (this._data || this._loadError) {
-    //  callback(this._loadError, this._data);
-    //  return;
-    //}
-
-    // callback && this._loadCallbacks.push(callback);
-
-    //if (!this._loading) {
-    //  this._loading = true;
-    //
-    //  var start = Date.now();
-    //  console.log("Loading data from " + this._path + "...");
-
-    //  var request = require('request');
-    //  request(this._path, function (error, response, body) {
-    //    if (error || response.statusCode !== 200) {
-    //      this._loadError = error;
-    //    }
-    //    else {
-    //      try {
-    //        this._data = JSON.parse(body);
-    //        console.log("Loaded in " + (Date.now() - start) + "ms");
-    //      }
-    //      catch (ex) {
-    //        this._loadError = ex;
-    //        console.log("Failed to load in " + (Date.now() - start) + "ms");
-    //      }
-    //    }
-
-    //    this._loading = false;
-
-    //     var callbacks = this._loadCallbacks;
-    //     this._loadCallbacks = [];
-    //     callbacks.forEach(function(callback) {
-    //       callback(this._loadError, this._data);
-    //     }.bind(this));
-    //   }.bind(this));
-    // }
   },
 
   project: function(destinationProjection) {
@@ -205,24 +135,24 @@ RemoteGeoJsonSource.prototype = {
     if (!FILTER_BY_EXTENTS) {
       return dataset;
     }
-    
+
     var extent = {
       minX: minX,
       minY: minY,
       maxX: maxX,
       maxY: maxY
     };
-    
+
     return this._shapes(dataset).filter(function(shape) {
       // return intersects(this._shapeBounds(shape), extent);
       return intersects(shape.bounds, extent);
     }.bind(this));
   },
-  
+
   _shapeBounds: function(shape) {
     shape = shape.geometry || shape;
     var coordinates = shape.coordinates;
-    
+
     if (shape.type === "Point") {
       return {
         minX: coordinates[0],
@@ -231,14 +161,14 @@ RemoteGeoJsonSource.prototype = {
         maxY: coordinates[1]
       };
     }
-    
+
     var bounds = {
       minX: Infinity,
       minY: Infinity,
       maxX: -Infinity,
       maxY: -Infinity
     };
-    
+
     if (shape.type === "Polygon" || shape.type === "MultiLineString") {
       for (var i = coordinates.length - 1; i >= 0; i--) {
         var coordinateSet = coordinates[i];
@@ -272,10 +202,10 @@ RemoteGeoJsonSource.prototype = {
         bounds.maxY = Math.max(bounds.maxY, coordinates[i][1]);
       }
     }
-    
+
     return bounds;
   },
-  
+
   _shapes: function(feature) {
     var shapes = [];
     if (feature.type === "FeatureCollection") {
@@ -299,7 +229,7 @@ RemoteGeoJsonSource.prototype = {
     else {
       shapes.push(feature);
     }
-    
+
     return shapes;
   }
 };
@@ -310,10 +240,10 @@ var intersects = function(a, b) {
   var xIntersects = (a.minX < b.maxX && a.minX > b.minX) ||
                     (a.maxX < b.maxX && a.maxX > b.minX) ||
                     (a.minX < b.minX && a.maxX > b.maxX);
-                    
+
   var yIntersects = (a.minY < b.maxY && a.minY > b.minY) ||
                     (a.maxY < b.maxY && a.maxY > b.minY) ||
                     (a.minY < b.minY && a.maxY > b.maxY);
-                    
+
   return xIntersects && yIntersects;
 };
