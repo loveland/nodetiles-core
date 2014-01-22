@@ -37,7 +37,7 @@
     "shp":"https://github.com/yuletide/node-shp/tarball/master"
   },
   "devDependencies": {
-    "mocha":  "~1.4.1",
+    "mocha":  "~1.17.1",
     "chai": "~1.2.0",
     "sinon": "~1.4.2"
   }
