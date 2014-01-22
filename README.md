@@ -2,7 +2,7 @@ Nodetiles-Core
 =============
 Nodetiles-core is a javascript library for rendering map tiles suitable for slippy-maps and static images. Features include:
 
-- **Flexible Data-connectors**: We offer GeoJson and PostGIS connectors out-of-the-box, but it's easy to build your own. 
+- **Flexible Data-connectors**: We offer GeoJson and PostGIS connectors out-of-the-box, but it's easy to build your own.
 - **Map Projections**: Transform data between more [3,900+](https://github.com/yuletide/node-proj4js-defs/blob/master/epsg.js) EPSG projections using Proj4.js
 - **CartoCSS Support**: We support many (if not most) stylesheet features of [CartCSS](http://mapbox.com/tilemill/docs/manual/carto/) making it trivial to import your map styles from tools like Tilemill
 - **Slippy-map URL helpers**: Easily serve map tiles, UTFGrids, and Tile.json. Check out [nodetiles-init](https://github.com/codeforamerica/nodetiles-init) for a simple scaffold.
@@ -23,16 +23,16 @@ var nodetiles = require('nodetiles-core'),
     GeoJsonSource = nodetiles.datasources.GeoJson,
     Projector = nodetiles.projector,
     fs = require('fs'); // we'll output to a file
-    
+
 /* Create your map context */
 var map = new nodetiles.Map({
     projection: "EPSG:4326" // set the projection of the map
 });
 
 /* Add some data */
-map.addData(new GeoJsonSource({ 
+map.addData(new GeoJsonSource({
   name: "world",
-  path: __dirname + '/countries.geojson', 
+  path: __dirname + '/countries.geojson',
   projection: "EPSG:900913"
 }));
 
@@ -71,6 +71,12 @@ Projections
 -----------
 [Supported projections](https://github.com/yuletide/node-proj4js-defs)
 
+Common errors
+-------------
 
+If you have issues installing canvas on OS X, you may need to explicitly set the path to pkgconfig:
 
+```
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+```
 
