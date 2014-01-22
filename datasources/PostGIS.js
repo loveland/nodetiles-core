@@ -2,7 +2,7 @@ var pg        = require("pg").native,
     projector = require(__dirname + "/../lib/projector"),
     __        = require("lodash");
 /*
- * Something like this eventually? 
+ * Something like this eventually?
  * https://github.com/mapbox/tilemill/blob/master/models/Layer.bones#L60
  */
 
@@ -13,11 +13,11 @@ var PostGISSource = function(options) {
   this._connectionString = options.connectionString; // required
   this._tableName = options.tableName;               // required
   this._geomField = options.geomField;               // required
-  this._attrFields = __.isArray(options.fields) ? 
-                       options.fields.join(',') : 
+  this._attrFields = __.isArray(options.fields) ?
+                       options.fields.join(',') :
                        options.fields; // array of attribute fields, or comma separated suggested for better performanace
   this.sourceName = options.name || options.tableName;
-  
+
   // TODO: allow `pg` options to be easily set (e.g. max connections, etc.)
   // TODO: throw errors if required fields are missing
   // console.log("Creating PostGIS source: "+this._connectionString+" "+this._tableName);
@@ -31,7 +31,7 @@ PostGISSource.prototype = {
   //
   // check proj4 support with: SELECT PostGIS_Full_Version();
   // i.e. POSTGIS="1.3.3" GEOS="3.1.0-CAPI-1.5.0" PROJ="Rel. 4.4.9, 29 Oct 2004" USE_STATS
-  // 
+  //
   // if (!projector.equals(projection,mapProjection){
   //    var query = SELECT ST_TRANSFORM(query, projection, mapProjecion)
 
@@ -42,7 +42,7 @@ PostGISSource.prototype = {
     // minY = 37.756;
     // maxX = -122.451;
     // maxY = 37.761;
-    
+
     var min = [minX, minY];
     var max = [maxX, maxY];
 
@@ -52,12 +52,12 @@ PostGISSource.prototype = {
       max = projector.project.Point(mapProjection, this._projection, max);
       // console.log(min,max);
     }
-    
+
     pg.connect(this._connectionString, function(err, client) { // Switched method signature... WTF?!
       if (err) { console.error(err); return callback(err, null); }
       // console.log("Loading features...");
       var start, query;
-        
+
       start = Date.now();
       if (this._attrFields) {
         query = "SELECT ST_AsGeoJson("+this._geomField+") as geometry, "+this._attrFields+" FROM "+this._tableName+" WHERE "+this._geomField+" && ST_MakeEnvelope($1,$2,$3,$4);";
@@ -65,11 +65,11 @@ PostGISSource.prototype = {
       else {
         query = "SELECT ST_AsGeoJson("+this._geomField+") as geometry,* FROM "+this._tableName+" WHERE "+this._geomField+" && ST_MakeEnvelope($1,$2,$3,$4);";
       }
-      console.log("Querying... "+query+" "+min+", "+max);
+      // console.log("Querying... "+query+" "+min+", "+max);
       client.query(query, [min[0], min[1], max[0], max[1]], function(err, result) {
         if (err) { return callback(err, null); }
         // console.log("Loaded in " + (Date.now() - start) + "ms");
-        
+
         var geoJson;
 
         if (result && result.rows) {
@@ -94,27 +94,27 @@ PostGISSource.prototype = {
 
   _toGeoJson: function(rows){
     var obj, i;
-    
+
     obj = {
       type: "FeatureCollection",
       features: []
     };
-    
+
     for (i = 0; i < rows.length; i++) {
       var item, feature, geometry;
       item = rows[i];
-      
+
       geometry = JSON.parse(item.geometry);
       delete item.geometry;
-      
+
       feature = {
         type: "Feature",
         properties: item,
         geometry: geometry
       }
-      
+
       obj.features.push(feature);
-    } 
+    }
     return obj;
   }
 }
