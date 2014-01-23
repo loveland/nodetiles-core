@@ -1,6 +1,6 @@
 {
   "name": "nodetiles-core",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Joyful map rendering with Node.js.",
   "contributors": [
     {
@@ -20,10 +20,10 @@
   "main": "./index",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codeforamerica/nodetiles.git"
+    "url": "https://github.com/nodetiles/nodetiles-core.git"
   },
   "engines": {
-    "node": ">0.6.x",
+    "node": ">0.8.x",
     "npm":  ">1.1.x"
   },
   "dependencies": {
@@ -37,8 +37,11 @@
     "shp":"https://github.com/yuletide/node-shp/tarball/master"
   },
   "devDependencies": {
-    "mocha":  "~1.17.1",
-    "chai": "~1.2.0",
-    "sinon": "~1.4.2"
+    "mocha":  "~1.9",
+    "chai": "~1.5",
+    "sinon": "~1.6"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
