@@ -21,7 +21,7 @@ module.exports = {
    * Transform between projections
    */
   projector: projector,
-  
+
   /**
    * Routing Middleware
    */

@@ -79,6 +79,15 @@ Projections
 -----------
 [Supported projections](https://github.com/yuletide/node-proj4js-defs)
 
+Common errors
+-------------
+
+If you have issues installing canvas on OS X, you may need to explicitly set the path to pkgconfig:
+
+```
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+```
+
 Copyright
 ---------
 Copyright (c) 2012-2013 Code for America. See LICENSE for details.
