@@ -24,7 +24,7 @@
   },
   "engines": {
     "node": ">0.8.x",
-    "npm":  ">1.1.x"
+    "npm": ">1.1.x"
   },
   "dependencies": {
     "async": "~0.2",
@@ -37,9 +37,11 @@
     "shp":"https://github.com/yuletide/node-shp/tarball/master"
   },
   "devDependencies": {
-    "chai": "~1.5",
-    "mocha":  "~1.9",
-    "sinon": "~1.6"
+    "mocha": "~1.17.1",
+    "chai": "~1.9.0",
+    "sinon": "~1.8.0",
+    "istanbul": "~0.2.4",
+    "coveralls": "~2.7.1"
   },
   "scripts": {
     "test": "mocha"

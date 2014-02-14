@@ -1,12 +1,20 @@
 Nodetiles-Core
 =============
+
+[![Build Status](https://travis-ci.org/nodetiles/nodetiles-core.png?branch=master)](https://travis-ci.org/nodetiles/nodetiles-core)
+[![Dependency Status](https://gemnasium.com/nodetiles/nodetiles-core.png)](https://gemnasium.com/nodetiles/nodetiles-core)
+[![Coverage Status](https://coveralls.io/repos/nodetiles/nodetiles-core/badge.png?branch=master)](https://coveralls.io/r/nodetiles/nodetiles-core?branch=master)
+[![Code Climate](https://codeclimate.com/github/nodetiles/nodetiles-core.png)](https://codeclimate.com/github/nodetiles/nodetiles-core)
+[![NPM version](https://badge.fury.io/js/nodetiles-core.png)](http://badge.fury.io/js/nodetiles-core)
+
+
 Nodetiles-core is a javascript library for rendering map tiles suitable for slippy-maps and static images. Features include:
 
 - **Flexible Data-connectors**: We offer GeoJson and Shapefile connectors out-of-the-box, but it's easy to build your own.
 - **Map Projections**: Transform data between more [3,900+](https://github.com/yuletide/node-proj4js-defs/blob/master/epsg.js) EPSG projections using Proj4.js
-- **CartoCSS Support**: We support many (if not most) stylesheet features of [CartCSS](http://mapbox.com/tilemill/docs/manual/carto/) making it trivial to import your map styles from tools like Tilemill
+- **CartoCSS Support**: We support many (if not most) stylesheet features of [CartoCSS](http://mapbox.com/tilemill/docs/manual/carto/) making it trivial to import your map styles from tools like Tilemill
 - **Slippy-map URL helpers**: Easily serve map tiles, UTFGrids, and Tile.json. Check out [nodetiles-init](https://github.com/nodetiles/nodetiles-init) for a simple scaffold.
-- **Static maps**: If slipply-maps aren't your style, generate static images of any dimension; checkout [nodetiles-example-static](https://github.com/nodetiles/nodetiles-example-static) for examples.
+- **Static maps**: If slippy-maps aren't your style, generate static images of any dimension; checkout [nodetiles-example-static](https://github.com/nodetiles/nodetiles-example-static) for examples.
 - **Joyfully simple, pluggable, flexible, powerful**: We built Nodetiles to be easily understandable, extensible and a joy to use. It's built with Javascript and tries to provide a solid foundation of tools that are still easy to understand, extend or replace depending on your needs. [File an issue](https://github.com/nodetiles/nodetiles-core/issues/new) if Nodetiles can't do what you need.
 
 Screenshot
