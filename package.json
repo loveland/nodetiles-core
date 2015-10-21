@@ -23,15 +23,14 @@
     "url": "https://github.com/nodetiles/nodetiles-core.git"
   },
   "engines": {
-    "node": ">0.8.x",
-    "npm": ">1.1.x"
+    "node": ">=0.10.x",
+    "npm": ">=1.4.x"
   },
   "dependencies": {
     "async": "~0.2",
-    "canvas": "1.1.x",
+    "canvas": "1.2.11",
     "carto":"0.9.5",
     "lodash": "2.4",
-    "pg":"~1.0",
     "proj4js":"~0.3.0",
     "proj4js-defs":">=0.0.1",
     "shp":"https://github.com/yuletide/node-shp/tarball/master"
