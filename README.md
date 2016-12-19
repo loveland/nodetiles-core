@@ -70,6 +70,19 @@ map.render({
 
 ```
 
+Magic filtering 
+---------------
+
+To filter objects where a key exists or not, you can use styles with the keyword
+'`$undefined`'
+
+```[myfield='$undefined']```
+
+or
+
+```[myfield!='$undefined']```
+
+
 Thanks
 -------
 
