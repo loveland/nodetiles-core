@@ -3,6 +3,9 @@
 profile
 
 node_modules
+build
+npm-debug.log
+
 
 # pull these data files down separately (they are HUGE and shouldn't be stored in the repo)
 geodata
