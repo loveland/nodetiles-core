@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "async": "~0.2",
-    "canvas": "1.6.13",
+    "canvas": "2.6.0",
     "carto":"0.9.5",
     "lodash": "2.4",
     "proj4js":"~0.3.0",
