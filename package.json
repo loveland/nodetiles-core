@@ -23,27 +23,25 @@
     "url": "https://github.com/nodetiles/nodetiles-core.git"
   },
   "engines": {
-    "node": ">=0.10.x",
-    "npm": ">=1.4.x"
+    "node": ">=8.0",
   },
   "dependencies": {
     "async": "~0.2",
     "canvas": "2.6.0",
-    "carto":"0.9.5",
+    "carto": "0.9.5",
     "lodash": "2.4",
-    "proj4js":"~0.3.0",
-    "proj4js-defs":">=0.0.1",
-    "shp":"https://github.com/yuletide/node-shp/tarball/master"
+    "shp": "https://github.com/yuletide/node-shp.git",
+    "proj4js": "~0.3.0",
+    "proj4js-defs": ">=0.0.1"
   },
   "devDependencies": {
-    "mocha": "~1.17.1",
     "chai": "~1.9.0",
-    "sinon": "~1.8.0",
+    "coveralls": "3.0.4",
     "istanbul": "~0.2.4",
-    "coveralls": "~2.7.1"
+    "mocha": "^6.1.4",
+    "sinon": "~1.8.0"
   },
   "scripts": {
-    "pretest": "npm ls --depth=Infinity > /dev/null",
     "test": "mocha"
   }
 }

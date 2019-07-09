@@ -92,6 +92,13 @@ Projections
 -----------
 [Supported projections](https://github.com/yuletide/node-proj4js-defs)
 
+Developing 
+----------
+
+```
+npx mocha
+```
+
 Common errors
 -------------
 
