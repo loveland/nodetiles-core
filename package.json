@@ -28,7 +28,7 @@
   "dependencies": {
     "async": "~0.2",
     "canvas": "2.6.0",
-    "carto": "0.9.5",
+    "carto": "1.2.0",
     "lodash": "4.17",
     "shp": "https://github.com/yuletide/node-shp.git",
     "proj4js": "~0.3.0",
