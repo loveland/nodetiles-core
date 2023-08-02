@@ -37,8 +37,8 @@
   "devDependencies": {
     "chai": "~1.9.0",
     "coveralls": "3.0.4",
-    "istanbul": "~0.2.4",
-    "mocha": "^6.1.4",
+    "istanbul": "~0.4.5",
+    "mocha": "^10.2.0",
     "sinon": "~1.8.0"
   },
   "scripts": {
