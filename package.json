@@ -29,7 +29,7 @@
     "async": "~0.2",
     "canvas": "2.6.0",
     "carto": "0.9.5",
-    "lodash": "2.4",
+    "lodash": "4.17",
     "shp": "https://github.com/yuletide/node-shp.git",
     "proj4js": "~0.3.0",
     "proj4js-defs": ">=0.0.1"
