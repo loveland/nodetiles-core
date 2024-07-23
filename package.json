@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "async": "~0.2",
-    "canvas": "2.6.0",
+    "canvas": "2.11.2",
     "carto": "1.2.0",
     "lodash": "4.17",
     "shp": "https://github.com/yuletide/node-shp.git",
