@@ -1,6 +1,6 @@
 {
   "name": "nodetiles-core",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Joyful map rendering with Node.js.",
   "contributors": [
     {
@@ -23,11 +23,11 @@
     "url": "https://github.com/nodetiles/nodetiles-core.git"
   },
   "engines": {
-    "node": ">=8.0"
+    "node": ">=18.2.0"
   },
   "dependencies": {
     "async": "~0.2",
-    "canvas": "2.11.2",
+    "canvas": "3.2.3",
     "carto": "1.2.0",
     "lodash": "4.17",
     "shp": "https://github.com/yuletide/node-shp.git",
